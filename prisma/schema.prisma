@@ -12,3 +12,101 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Gestante {
+  id               Int               @id @default(autoincrement())
+  nome             String
+  data_nascimento  DateTime
+  cpf              String            @unique
+  gestacoes        Gestacao[]
+  dados_evolutivos DadosEvolutivos[]
+}
+
+model DadosEvolutivos {
+  id                             Int       @id @default(autoincrement())
+  gestante                       Gestante  @relation(fields: [gestanteId], references: [id])
+  gestanteId                     Int
+  municipio                      String
+  diagnostico_desnutricao        String
+  energia_eletrica_domicilio     Boolean
+  escolaridade                   Int
+  tipo_moradia                   Int
+  moradia_rede_esgoto            Boolean
+  renda_familiar                 Float
+  tratamento_agua                Boolean
+  amamentacao                    Boolean
+  chefe_familia                  Boolean
+  data_ultima_amamentacao        DateTime?
+  em_risco                       Boolean
+  estado_civil                   Int
+  quantidade_abortos             Int
+  quantidade_filhos_vivos        Int
+  quantidade_gemelares           Int
+  quantidade_gestacao            Int
+  quantidade_nascidos_mortos     Int
+  quantidade_nascidos_vivos      Int
+  quantidade_obitos_semanal      Int
+  quantidade_obitos_apos_semanal Int
+  quantidade_partos              Int
+  quantidade_partos_cesarios     Int
+  quantidade_partos_vaginais     Int
+  quantidade_rn_peso2500_4000    Int
+  quantidade_rn_peso_maior4000   Int
+  quantidade_rn_peso_menor2500   Int
+  hipertensao                    Boolean
+  diabetes                       Boolean
+  cirurgia_pelvica               Boolean
+  infeccao_urinaria              Boolean
+  ma_formacao_congenita          Boolean
+  contato                        String
+  contato_emergencia             String
+  data_atualizacao               DateTime
+}
+
+model Gestacao {
+  id                      Int              @id @default(autoincrement())
+  gestante                Gestante         @relation(fields: [gestanteId], references: [id])
+  gestanteId              Int
+  consumo_alcool          Boolean
+  frequencia_uso_alcool   Int
+  data_ultima_menstruacao DateTime
+  data_inicio_gestacao    DateTime
+  fator_rh                Int
+  fuma                    Boolean
+  quantidade_cigarros_dia Int
+  uso_drogas              Int
+  gravidez_planejada      Boolean
+  grupo_sanguineo         Int
+  peso_antes_gestacao     Float
+  risco_gestacional       Int
+  vacina_hepatite_b       Boolean
+  situacao_gestacional    Int
+  exames                  Exame[]
+  acompanhamentos         Acompanhamento[]
+}
+
+model Acompanhamento {
+  id                   Int      @id @default(autoincrement())
+  gestacao             Gestacao @relation(fields: [gestacaoId], references: [id])
+  gestacaoId           Int
+  data_acompanhamento  DateTime
+  realizado_por        String
+  peso_atual           Float
+  idade_gestacional    Int
+  pressao_arterial     String
+  batimentos_cardiacos Int?
+  altura_uterina       Int?
+  tipo                 String
+  Exame                Exame[]
+}
+
+model Exame {
+  id               Int            @id @default(autoincrement())
+  acompanhamento   Acompanhamento @relation(fields: [acompanhamentoId], references: [id])
+  acompanhamentoId Int
+  tipo             String
+  resultado        String
+  observacao       String?
+  Gestacao         Gestacao?      @relation(fields: [gestacaoId], references: [id])
+  gestacaoId       Int?
+}
