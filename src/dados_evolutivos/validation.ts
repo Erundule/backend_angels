@@ -3,7 +3,7 @@ import { z } from "zod";
 export const validation = z.object({
   gestanteId: z.number(),
   municipio: z.string(),
-  diagnostico_desnutricao: z.boolean(),
+  diagnostico_desnutricao: z.string(),
   energia_eletrica_domicilio: z.boolean(),
   escolaridade: z.number(),
   tipo_moradia: z.number(),
