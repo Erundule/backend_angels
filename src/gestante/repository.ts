@@ -1,6 +1,5 @@
 const { prisma } = require("../prisma/service.ts");
 
-//buscar por id
 export const getById = async (id: number) => {
   const gestante = await prisma.gestante.findUnique({
     where: {
@@ -11,14 +10,12 @@ export const getById = async (id: number) => {
   return gestante;
 };
 
-//buscat todos 
 export const getAll = async () => {
   const gestantes = await prisma.gestante.findMany();
 
   return gestantes;
 };
 
-//criar 
 export const createGestante = async (data: object) => {
   const gestante = await prisma.gestante.create({
     data,
@@ -27,7 +24,6 @@ export const createGestante = async (data: object) => {
   return gestante;
 };
 
-//delete
 export const deleteGestante = async (id: number) => {
   const gestante = await prisma.gestante.delete({
     where: {
@@ -37,5 +33,3 @@ export const deleteGestante = async (id: number) => {
 
   return gestante;
 };
-
-
