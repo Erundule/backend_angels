@@ -1,10 +1,10 @@
 const { prisma } = require("../prisma/service.ts");
 
-async function getDadosEvolutivos() {
+export async function getDadosEvolutivos() {
   return await prisma.dadosEvolutivos.findMany();
 }
 
-async function getDadosEvolutivosById(id: number) {
+export async function getDadosEvolutivosById(id: number) {
   return await prisma.dadosEvolutivos.findUnique({
     where: {
       id,
@@ -12,17 +12,16 @@ async function getDadosEvolutivosById(id: number) {
   });
 }
 
-async function createDadosEvolutivos(data: object) {
+export async function createDadosEvolutivos(data: object) {
   return await prisma.dadosEvolutivos.create({
     data,
   });
 }
 
-async function deleteDadosEvolutivos(id: number) {
+export async function deleteDadosEvolutivos(id: number) {
   return await prisma.dadosEvolutivos.delete({
     where: {
       id,
     },
   });
 }
-
