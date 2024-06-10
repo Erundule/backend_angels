@@ -26,7 +26,7 @@ describe("Service tests", () => {
         situacao_gestacional: 1,
       };
 
-  it("should get dados evolutivos by id", async () => {
+  it("should get gestacao by id", async () => {
     repository.getById.mockResolvedValue(mockGestacao);
     const result = await service.getById(mockGestacao.gestante_id);
     expect(result).toEqual(mockGestacao);
@@ -35,14 +35,14 @@ describe("Service tests", () => {
     );
   });
 
-  it("should get all dados evolutivos", async () => {
+  it("should get all gestacao", async () => {
     repository.getAll.mockResolvedValue([mockGestacao]);
     const result = await service.getAll();
     expect(result).toEqual([mockGestacao]);
     expect(repository.getAll).toHaveBeenCalled();
   });
 
-  it("should create a new dados evolutivos", async () => {
+  it("should create a new gestacao", async () => {
     const validateSpy = vi
       .spyOn(gestacaoValidation, "parse")
       .mockReturnValue(mockGestacao);
@@ -55,7 +55,7 @@ describe("Service tests", () => {
     validateSpy.mockRestore();
   });
 
-  it("should delete a dados evolutivos by id", async () => {
+  it("should delete a gestacao by id", async () => {
     repository.deleteGestacao.mockResolvedValue(mockGestacao);
     const result = await service.deleteGestacao(mockGestacao.gestante_id);
     expect(result).toEqual(await service.deleteGestacao(mockGestacao.gestante_id));
