@@ -19,7 +19,7 @@ export const getAll = async () => {
 };
 
 //criar 
-export const createGestante = async (data: object) => {
+export const createGestacao = async (data: object) => {
   const gestacao = await prisma.gestacao.create({
     data,
   });
@@ -28,7 +28,7 @@ export const createGestante = async (data: object) => {
 };
 
 //delete
-export const deleteGestante = async (id: number) => {
+export const deleteGestacao = async (id: number) => {
   const gestacao = await prisma.gestacao.delete({
     where: {
       id,
