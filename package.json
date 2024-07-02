@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "ts-node src/index.ts",
     "docs": "node swagger.js",
-    "test": "vitest"
+    "test": "vitest",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
