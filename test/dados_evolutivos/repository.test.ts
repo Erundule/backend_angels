@@ -5,7 +5,7 @@ import { prismaMock } from "../singleton";
 test("should create new dadosEvolutivos", async () => {
   const mockDadosEvolutivos = {
     id: Math.floor(Math.random() * 2147483647),
-    gestanteId: 1275350671,
+    gestanteId: 1,
     municipio: "Recife",
     diagnostico_desnutricao: "OK",
     energia_eletrica_domicilio: true,
@@ -53,7 +53,7 @@ test("should create new dadosEvolutivos", async () => {
 test("should get gestante by id", async () => {
   const mockDadosEvolutivos = {
     id: Math.floor(Math.random() * 2147483647),
-    gestanteId: 1275350671,
+    gestanteId: 1,
     municipio: "Recife",
     diagnostico_desnutricao: "OK",
     energia_eletrica_domicilio: true,
@@ -102,7 +102,7 @@ test("should get gestante by id", async () => {
 test("should delete gestante by id", async () => {
   const mockDadosEvolutivos = {
     id: Math.floor(Math.random() * 2147483647),
-    gestanteId: 1275350671,
+    gestanteId: 1,
     municipio: "Recife",
     diagnostico_desnutricao: "OK",
     energia_eletrica_domicilio: true,
